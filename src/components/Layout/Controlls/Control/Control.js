@@ -12,10 +12,8 @@ const Control = (props) => {
         max={100}
         value={value}
         label="padding"
-        changeValue={() => {
-          let currValue = value + 1;
-          setValue(currValue);
-          console.log(value);
+        changeValue={(e) => {
+          setValue(e.target.value);
         }}
       />
     </div>

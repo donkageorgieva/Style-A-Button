@@ -3,10 +3,6 @@ const Slider = (props) => {
   return (
     <React.Fragment>
       <div className="flex space-x-2 my-2 ">
-        <span className="text-gray-800 dark:text-indigo-200 text-sm">
-          {" "}
-          {props.min}{" "}
-        </span>
         <input
           type="range"
           min={props.min}
@@ -17,9 +13,9 @@ const Slider = (props) => {
           className="w-full h-7 "
           name="range"
         />
-        <span className="text-gray-800 dark:text-indigo-200 text-sm">
+        <span className="text-gray-800 dark:text-indigo-200 text-sm ">
           {" "}
-          {props.max}{" "}
+          {props.value}{" "}
         </span>
       </div>
     </React.Fragment>
