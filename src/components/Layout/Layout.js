@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import Button from "../UI/Button/Button";
 import Header from "./Header/Header";
+import Controlls from "./Controlls/Controlls-Group";
 const Layout = (props) => {
   return (
     <React.Fragment>
-      <Header toggleMode={props.toggleMode} />
-      <main className="flex dark:bg-gray-900 bg-gray-50 w-full h-screen"></main>
+      <Header toggleMode={props.toggleMode} dark={props.dark} />
+      <main className=" container mx-auto px-4 flex dark:bg-gray-900 bg-gray-50 w-full h-screen transition duration-400 items-center">
+        <Controlls />
+      </main>
     </React.Fragment>
   );
 };
