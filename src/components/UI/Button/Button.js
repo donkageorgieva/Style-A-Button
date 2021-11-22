@@ -1,4 +1,6 @@
-const Button = (props) => {
+import { forwardRef } from "react";
+
+const Button = forwardRef((props, ref) => {
   return (
     <button
       className={
@@ -9,10 +11,11 @@ const Button = (props) => {
             ].join("")
       }
       onClick={props.onClick}
+      ref={ref}
     >
       {props.text ? props.text : "Button"}
     </button>
   );
-};
+});
 
 export default Button;
