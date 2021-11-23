@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import { useRef } from "react";
 import Button from "../../UI/Button/Button";
 import Control from "./Control/Control";
+import { useSelector } from "react-redux";
 const Controlls = () => {
+  console.log(useSelector((state) => state.reducer.options));
+  const controlOptions = useSelector((state) => state.reducer.options);
+  const controlElements = controlOptions.map((option) => {
+    return <Control setting={option.name} />;
+  });
   const buttonStylesHandler = () => {};
   const hoverStylesHandler = () => {};
   const mainButtonRef = useRef(null);
@@ -10,7 +16,7 @@ const Controlls = () => {
     mainButtonRef.current.focus();
   }, [mainButtonRef]);
   return (
-    <div className=" w-1/5 bg-gray-100 dark:bg-gray-900 h-full">
+    <div className=" w-1/5 bg-gray-100 dark:bg-gray-900 ">
       <div className="flex w-100">
         <Button
           otherClasses="flex-grow"
@@ -24,12 +30,9 @@ const Controlls = () => {
           onClick={hoverStylesHandler}
         />
       </div>
-      <div className="p-4 h-screen flex flex-col justify-center">
+      <div className="p-4  flex flex-col justify-center">
         <div className=" bg-gray-200 dark:bg-gray-800 p-4">
-          <Control setting="padding" />
-          <Control />
-          <Control />
-          <Control />
+          {controlElements}
         </div>
       </div>
     </div>

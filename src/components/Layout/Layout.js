@@ -6,7 +6,7 @@ const Layout = (props) => {
   return (
     <React.Fragment>
       <Header toggleMode={props.toggleMode} dark={props.dark} />
-      <main className=" justify-between flex dark:bg-gray-800 bg-gray-50 w-full h-screen transition duration-400 items-center">
+      <main className=" justify-between flex dark:bg-gray-800 bg-gray-50 w-full   transition duration-400 items-center">
         <Controlls />
         <PreviewWindow />
       </main>

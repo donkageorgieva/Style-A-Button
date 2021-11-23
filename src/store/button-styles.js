@@ -36,3 +36,9 @@ const buttonStyleSlice = createSlice({
     },
   },
 });
+
+const store = configureStore({
+  reducer: buttonStyleSlice,
+});
+
+export default store;

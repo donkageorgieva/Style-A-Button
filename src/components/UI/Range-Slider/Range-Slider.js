@@ -2,7 +2,7 @@ import React from "react";
 const Slider = (props) => {
   return (
     <React.Fragment>
-      <div className="flex space-x-2 my-2 ">
+      <div className={[`flex space-x-2 my-2 ${props.classes}`].join(" ")}>
         <input
           type="range"
           min={props.min}
