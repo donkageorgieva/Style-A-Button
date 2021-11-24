@@ -6,7 +6,12 @@ import { useSelector } from "react-redux";
 const Controlls = () => {
   const controlOptions = useSelector((state) => state.reducer.options);
   const controlElements = controlOptions.map((option) => {
-    return <Control setting={option.name} />;
+    return (
+      <Control
+        setting={option.name}
+        color={option.unit === "color" ? true : false}
+      />
+    );
   });
   const buttonStylesHandler = () => {};
   const hoverStylesHandler = () => {};

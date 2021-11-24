@@ -2,6 +2,7 @@ import Slider from "../../../UI/Range-Slider/Range-Slider";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { buttonStyleActions } from "../../../../store/button-styles";
+import { ChromePicker } from "react-color";
 const Control = (props) => {
   const dispatch = useDispatch();
   const currControl = useSelector((state) =>
@@ -16,6 +17,9 @@ const Control = (props) => {
         value,
       })
     );
+  };
+  const changeColor = (color) => {
+    console.log(color);
   };
   const [toggle, setToggle] = useState(false);
   const toggleControlHandler = () => {
@@ -44,21 +48,31 @@ const Control = (props) => {
           </svg>
         </button>
       </div>
-
-      <Slider
-        classes={
-          toggle
-            ? "transition duration-400 ease-in-out"
-            : "w-o h-0 opacity-0 transition duration-400 ease-in-out "
+      <div
+        className={
+          !toggle
+            ? "opacity-0 transition duration-400 w-0 h-0"
+            : "transition-duration-400"
         }
-        id={props.setting}
-        min={0}
-        max={50}
-        label="padding"
-        changeValue={(value) => {
-          addStyle(value);
-        }}
-      />
+      >
+        {props.color ? (
+          <ChromePicker
+            color="#fff"
+            onChangeComplete={changeColor}
+            onChange={changeColor}
+          />
+        ) : (
+          <Slider
+            id={props.setting}
+            min={0}
+            max={50}
+            label="padding"
+            changeValue={(value) => {
+              addStyle(value);
+            }}
+          />
+        )}
+      </div>
     </div>
   );
 };

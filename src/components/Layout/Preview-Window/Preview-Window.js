@@ -1,4 +1,3 @@
-import Button from "../../UI/Button/Button";
 import { useSelector } from "react-redux";
 const PreviewWindow = (props) => {
   const chosenStyles = useSelector((state) => state.reducer.options);
