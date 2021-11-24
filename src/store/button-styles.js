@@ -41,4 +41,5 @@ const store = configureStore({
   reducer: buttonStyleSlice,
 });
 
+export const buttonStyleActions = buttonStyleSlice.actions;
 export default store;

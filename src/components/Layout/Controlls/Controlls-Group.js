@@ -4,7 +4,6 @@ import Button from "../../UI/Button/Button";
 import Control from "./Control/Control";
 import { useSelector } from "react-redux";
 const Controlls = () => {
-  console.log(useSelector((state) => state.reducer.options));
   const controlOptions = useSelector((state) => state.reducer.options);
   const controlElements = controlOptions.map((option) => {
     return <Control setting={option.name} />;
@@ -16,7 +15,7 @@ const Controlls = () => {
     mainButtonRef.current.focus();
   }, [mainButtonRef]);
   return (
-    <div className=" w-1/5 bg-gray-100 dark:bg-gray-900 ">
+    <div className=" w-1/5 bg-gray-100 dark:bg-gray-900 min-h-screen ">
       <div className="flex w-100">
         <Button
           otherClasses="flex-grow"
