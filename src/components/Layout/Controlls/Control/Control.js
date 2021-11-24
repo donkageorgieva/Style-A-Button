@@ -16,7 +16,6 @@ const Control = (props) => {
         value,
       })
     );
-    console.log(currControl.value);
   };
   const [toggle, setToggle] = useState(false);
   const toggleControlHandler = () => {
@@ -52,6 +51,7 @@ const Control = (props) => {
             ? "transition duration-400 ease-in-out"
             : "w-o h-0 opacity-0 transition duration-400 ease-in-out "
         }
+        id={props.setting}
         min={0}
         max={50}
         label="padding"

@@ -4,17 +4,22 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   mode: "style",
   options: [
-    { name: "Background color", value: 0 },
-    { name: "Color", value: 0 },
-    { name: "Font", value: "" },
-    { name: "Font size", value: 0 },
-    { name: "Font weight", value: 0 },
-    { name: "P-X", value: 0 },
-    { name: "P-Y", value: 0 },
-    { name: "Border", value: false },
-    { name: "Border radius", value: 0 },
-    { name: "Box shadow", value: 0 },
-    { name: "Text shadow", value: 0 },
+    {
+      name: "Background color",
+      value: 0,
+      cssName: "backgroundColor",
+      unit: "px",
+    },
+    { name: "Color", value: 0, cssName: "color", unit: "" },
+    { name: "Font", value: "", cssName: "fontFamily" },
+    { name: "Font size", value: 0, cssName: "fontSize", unit: "px" },
+    { name: "Font weight", value: 0, cssName: "fontWeight" },
+    { name: "Horizontal padding", value: 0, cssName: "padding", unit: "px" },
+    { name: "Vertical padding", value: 0, cssName: "padding", unit: "px" },
+    { name: "Border", value: 0, cssName: "border", unit: "px" },
+    { name: "Border radius", value: 0, cssName: "borderRadius", unit: "px" },
+    { name: "Box shadow", value: 0, cssName: "boxShadow" },
+    { name: "Text shadow", value: 0, cssName: "textShadow" },
     { name: "Button text", value: "Button text" },
     { name: "Button class", value: "" },
   ],
@@ -26,7 +31,7 @@ const buttonStyleSlice = createSlice({
   reducers: {
     changeStyle(state, action) {
       switch (action.payload.name) {
-        case "P-X":
+        case "Horizontal padding":
           const currValue = state.options.find(
             (option) => option.name.trim() === action.payload.name.trim()
           );
