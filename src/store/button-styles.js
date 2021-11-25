@@ -6,11 +6,11 @@ const initialState = {
   options: [
     {
       name: "Background color",
-      value: 0,
+      value: "",
       cssName: "backgroundColor",
       unit: "color",
     },
-    { name: "Color", value: 0, cssName: "color", unit: "color" },
+    { name: "Color", value: "", cssName: "color", unit: "color" },
     { name: "Font", value: "", cssName: "fontFamily", unit: "select" },
     { name: "Font size", value: 0, cssName: "fontSize", unit: "px" },
     {
@@ -48,6 +48,7 @@ const buttonStyleSlice = createSlice({
       const currValue = state.options.find(
         (option) => option.name.trim() === action.payload.name.trim()
       );
+      console.log(action.payload.value);
       currValue.value = action.payload.value;
     },
   },

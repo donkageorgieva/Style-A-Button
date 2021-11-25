@@ -18,11 +18,8 @@ const Control = (props) => {
         value,
       })
     );
-    console.log(props.setting);
   };
-  const changeColor = (color) => {
-    console.log(color);
-  };
+
   const [toggle, setToggle] = useState(false);
   const toggleControlHandler = () => {
     const newToggleState = !toggle;
@@ -59,9 +56,10 @@ const Control = (props) => {
       >
         {!toggle ? null : props.color ? (
           <ChromePicker
-            color="#fff"
-            onChangeComplete={changeColor}
-            onChange={changeColor}
+            onChange={(color) => {
+              addStyle(color.hex);
+            }}
+            color={currControl.value}
           />
         ) : props.slider ? (
           <Slider
@@ -75,8 +73,8 @@ const Control = (props) => {
         ) : props.dropdown ? (
           <Dropdown
             options={props.unit}
-            changeValue={(value) => {
-              addStyle(value);
+            changeValue={(e) => {
+              addStyle(e.target.value);
             }}
           />
         ) : (

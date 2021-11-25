@@ -18,13 +18,14 @@ const PreviewWindow = (props) => {
         });
       } else {
         buttonStyles[style.cssName] = `${style.value}${
-          style.unit ? style.unit : null
+          style.unit === "px" ? style.unit : ""
         }`;
       }
     }
   });
+  console.log(buttonStyles);
   return (
-    <div className="dark:bg-indigo-900 p-4">
+    <div className="dark:bg-indigo-900 p-4 transition duration-400 ease-in-out">
       <button style={buttonStyles}>Hello</button>
     </div>
   );
