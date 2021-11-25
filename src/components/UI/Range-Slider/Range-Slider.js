@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 const Slider = (props) => {
   const [currValue, setValue] = useState(0);
 

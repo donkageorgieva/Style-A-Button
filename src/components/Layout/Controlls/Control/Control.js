@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { buttonStyleActions } from "../../../../store/button-styles";
 import { ChromePicker } from "react-color";
+import Dropdown from "../../../UI/Dropdown/Dropdown";
 const Control = (props) => {
   const dispatch = useDispatch();
   const currControl = useSelector((state) =>
@@ -17,6 +18,7 @@ const Control = (props) => {
         value,
       })
     );
+    console.log(props.setting);
   };
   const changeColor = (color) => {
     console.log(color);
@@ -61,16 +63,24 @@ const Control = (props) => {
             onChangeComplete={changeColor}
             onChange={changeColor}
           />
-        ) : (
+        ) : props.slider ? (
           <Slider
             id={props.setting}
             min={0}
             max={50}
-            label="padding"
             changeValue={(value) => {
               addStyle(value);
             }}
           />
+        ) : props.dropdown ? (
+          <Dropdown
+            options={props.unit}
+            changeValue={(value) => {
+              addStyle(value);
+            }}
+          />
+        ) : (
+          <input></input>
         )}
       </div>
     </div>

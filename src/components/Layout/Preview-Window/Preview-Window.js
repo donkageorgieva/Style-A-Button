@@ -10,9 +10,17 @@ const PreviewWindow = (props) => {
     ) {
       return;
     } else {
-      buttonStyles[style.cssName] = `${style.value}${
-        style.unit ? style.unit : null
-      }`;
+      if (Array.isArray(style.cssName)) {
+        style.cssName.forEach((styleVariant) => {
+          buttonStyles[styleVariant] = `${style.value}${
+            style.unit ? style.unit : null
+          }`;
+        });
+      } else {
+        buttonStyles[style.cssName] = `${style.value}${
+          style.unit ? style.unit : null
+        }`;
+      }
     }
   });
   return (

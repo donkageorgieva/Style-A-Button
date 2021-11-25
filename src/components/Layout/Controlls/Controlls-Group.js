@@ -9,7 +9,10 @@ const Controlls = () => {
     return (
       <Control
         setting={option.name}
-        color={option.unit === "color" ? true : false}
+        color={option.unit === "color" && true}
+        slider={option.unit === "px" && true}
+        dropdown={Array.isArray(option.unit) && true}
+        unit={option.unit}
       />
     );
   });
