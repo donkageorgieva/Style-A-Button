@@ -55,7 +55,7 @@ const Control = (props) => {
             : "transition-duration-400"
         }
       >
-        {props.color ? (
+        {!toggle ? null : props.color ? (
           <ChromePicker
             color="#fff"
             onChangeComplete={changeColor}
