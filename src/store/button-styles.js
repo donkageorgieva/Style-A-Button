@@ -6,11 +6,11 @@ const initialState = {
   options: [
     {
       name: "Background color",
-      value: "",
+      value: "#C63CD2",
       cssName: "backgroundColor",
       unit: "color",
     },
-    { name: "Color", value: "", cssName: "color", unit: "color" },
+    { name: "Color", value: "#FFFFFF", cssName: "color", unit: "color" },
     { name: "Font", value: "", cssName: "fontFamily", unit: "select" },
     { name: "Font size", value: 0, cssName: "fontSize", unit: "px" },
     {
@@ -21,13 +21,13 @@ const initialState = {
     },
     {
       name: "Horizontal padding",
-      value: 0,
+      value: 25,
       cssName: ["paddingRight", "paddingLeft"],
       unit: "px",
     },
     {
       name: "Vertical padding",
-      value: 0,
+      value: 5,
       cssName: ["paddingTop", "paddingBottom"],
       unit: "px",
     },

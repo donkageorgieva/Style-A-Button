@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 const PreviewWindow = (props) => {
   const chosenStyles = useSelector((state) => state.reducer.options);
   const buttonStyles = {};
+
   chosenStyles.forEach((style) => {
     if (
       style.cssName === undefined ||
@@ -23,6 +25,7 @@ const PreviewWindow = (props) => {
       }
     }
   });
+
   console.log(buttonStyles);
   return (
     <div className="dark:bg-indigo-900 p-4 transition duration-400 ease-in-out">
