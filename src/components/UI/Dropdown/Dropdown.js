@@ -8,6 +8,7 @@ const Dropdown = (props) => {
       onChange={(e) => {
         props.changeValue(e);
       }}
+      value={props.currValue}
     >
       {options}
     </select>

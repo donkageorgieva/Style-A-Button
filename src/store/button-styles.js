@@ -11,8 +11,13 @@ const initialState = {
       unit: "color",
     },
     { name: "Color", value: "#FFFFFF", cssName: "color", unit: "color" },
-    { name: "Font", value: "", cssName: "fontFamily", unit: "select" },
-    { name: "Font size", value: 0, cssName: "fontSize", unit: "px" },
+    {
+      name: "Font",
+      value: "Roboto",
+      cssName: "fontFamily",
+      unit: ["Roboto", "Montserrat"],
+    },
+    { name: "Font size", value: 16, cssName: "fontSize", unit: "px" },
     {
       name: "Font weight",
       value: 400,

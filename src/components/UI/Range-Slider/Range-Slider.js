@@ -1,8 +1,6 @@
 import React from "react";
 import { useState } from "react";
 const Slider = (props) => {
-  const [currValue, setValue] = useState(0);
-
   return (
     <React.Fragment>
       <div
@@ -14,10 +12,9 @@ const Slider = (props) => {
           type="range"
           min={props.min}
           max={props.max}
-          value={currValue}
+          value={props.currValue}
           onChange={(e) => {
             props.changeValue(e.target.value);
-            setValue(e.target.value);
           }}
           step="1"
           id="slider"
@@ -26,7 +23,7 @@ const Slider = (props) => {
         />
         <span className="text-gray-800 dark:text-indigo-200 text-sm ">
           {" "}
-          {currValue}{" "}
+          {props.currValue}{" "}
         </span>
       </div>
     </React.Fragment>

@@ -69,6 +69,7 @@ const Control = (props) => {
             changeValue={(value) => {
               addStyle(value);
             }}
+            currValue={currControl.value}
           />
         ) : props.dropdown ? (
           <Dropdown
@@ -76,6 +77,7 @@ const Control = (props) => {
             changeValue={(e) => {
               addStyle(e.target.value);
             }}
+            currValue={currControl.value}
           />
         ) : (
           <input></input>
