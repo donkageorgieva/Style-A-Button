@@ -9,9 +9,9 @@ const Controlls = () => {
     return (
       <Control
         setting={option.name}
-        color={option.unit === "color" && true}
-        slider={option.unit === "px" && true}
-        dropdown={Array.isArray(option.unit) && true}
+        color={option.element.color && true}
+        slider={option.element.slider && true}
+        dropdown={option.element.dropdown && true}
         unit={option.unit}
       />
     );

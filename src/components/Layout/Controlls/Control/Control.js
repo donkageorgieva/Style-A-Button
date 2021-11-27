@@ -54,14 +54,14 @@ const Control = (props) => {
             : "transition-duration-400"
         }
       >
-        {!toggle ? null : props.color ? (
+        {!toggle ? null : props.color && !props.slider ? (
           <ChromePicker
             onChange={(color) => {
               addStyle(color.hex);
             }}
             color={currControl.value}
           />
-        ) : props.slider ? (
+        ) : props.slider && !props.color ? (
           <Slider
             id={props.setting}
             min={0}
