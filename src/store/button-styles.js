@@ -34,7 +34,7 @@ const initialState = {
       cssName: "fontFamily",
       unit: ["Roboto", "Montserrat"],
       element: {
-        color: true,
+        color: false,
         slider: false,
         input: false,
         dropdown: true,

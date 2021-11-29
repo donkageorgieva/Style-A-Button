@@ -1,9 +1,9 @@
+import useButtonStyles from "../../../hooks/useButtonStyles";
+
 const CodeWindow = (props) => {
-  return (
-    <div>
-      <h1> Hi</h1>
-    </div>
-  );
+  const buttonStyles = useButtonStyles();
+  console.log(buttonStyles);
+  return <div className="dark:bg-indigo-900 p-4"></div>;
 };
 
 export default CodeWindow;
