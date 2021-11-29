@@ -165,7 +165,6 @@ const buttonStyleSlice = createSlice({
       const currValue = state.options.find(
         (option) => option.name.trim() === action.payload.name.trim()
       );
-      console.log(action.payload.value);
       currValue.value = action.payload.value;
     },
   },

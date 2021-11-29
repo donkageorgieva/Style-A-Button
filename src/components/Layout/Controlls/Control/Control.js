@@ -79,9 +79,14 @@ const Control = (props) => {
             }}
             currValue={currControl.value}
           />
-        ) : (
-          <input></input>
-        )}
+        ) : props.input ? (
+          <input
+            onChange={(e) => {
+              addStyle(e.target.value);
+            }}
+            value={currControl.value}
+          ></input>
+        ) : null}
       </div>
     </div>
   );

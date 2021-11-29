@@ -12,6 +12,7 @@ const Controlls = () => {
         color={option.element.color && true}
         slider={option.element.slider && true}
         dropdown={option.element.dropdown && true}
+        input={option.element.input && true}
         unit={option.unit}
       />
     );
