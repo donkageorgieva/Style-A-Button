@@ -1,9 +1,5 @@
-import { useSelector } from "react-redux";
-
-const useButtonStyles = () => {
-  const chosenStyles = useSelector((state) => state.reducer.options);
-  const buttonStyles = {};
-  chosenStyles.forEach((style) => {
+const useButtonStyles = (chosenStyles) => {
+  const styleObjectHandler = (style) => {
     if (
       style.cssName === undefined ||
       style.value === 0 ||
@@ -18,12 +14,35 @@ const useButtonStyles = () => {
           }`;
         });
       } else {
-        buttonStyles[style.cssName] = `${style.value}${
-          style.unit === "px" ? style.unit : ""
-        }`;
+        if (Array.isArray(style.value) && Array.isArray(style.unit)) {
+          let mergedValues = [];
+          style.value.forEach((value) => {
+            const valueIndex = style.value.indexOf(value);
+            if (style.unit[valueIndex] === "color") {
+              mergedValues[valueIndex] = "#" + value;
+            } else if (style.unit[valueIndex] === value) {
+              mergedValues[valueIndex] = value;
+            } else {
+              mergedValues[valueIndex] = value + style.unit[valueIndex];
+            }
+          });
+
+          buttonStyles[style.cssName] = mergedValues.join(" ");
+        } else {
+          buttonStyles[style.cssName] = `${style.value}${
+            style.unit === "px" ? style.unit : ""
+          }`;
+        }
       }
     }
-  });
+  };
+  const buttonStyles = {};
+  if (Array.isArray(chosenStyles)) {
+    chosenStyles.forEach((style) => {
+      styleObjectHandler(style);
+    });
+  }
+  styleObjectHandler(chosenStyles);
 
   return buttonStyles;
 };

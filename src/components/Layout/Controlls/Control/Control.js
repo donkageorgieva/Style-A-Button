@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { buttonStyleActions } from "../../../../store/button-styles";
 import { ChromePicker } from "react-color";
 import Dropdown from "../../../UI/Dropdown/Dropdown";
+import SliderAndColor from "../../../UI/Slider-And-Color/SliderAndColor";
 const Control = (props) => {
   const dispatch = useDispatch();
   const currControl = useSelector((state) =>
@@ -11,6 +12,7 @@ const Control = (props) => {
       (option) => option.name.trim() === props.setting.trim()
     )
   );
+  console.log(currControl);
   const addStyle = (value) => {
     dispatch(
       buttonStyleActions.changeStyle({
@@ -86,6 +88,8 @@ const Control = (props) => {
             }}
             value={currControl.value}
           ></input>
+        ) : props.slider && props.color ? (
+          <SliderAndColor setting={props.setting} />
         ) : null}
       </div>
     </div>

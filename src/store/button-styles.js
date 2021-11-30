@@ -91,8 +91,8 @@ const initialState = {
     {
       name: "Border",
       value: [1, "solid", "f6f6f6"],
-      cssName: ["border"],
-      unit: ["px", "color"],
+      cssName: "border",
+      unit: ["px", "solid", "color"],
       element: {
         color: true,
         slider: true,
@@ -104,7 +104,7 @@ const initialState = {
       name: "Border radius",
       value: 0,
       cssName: "borderRadius",
-      unit: "px",
+      unit: ["px", "color"],
       element: {
         color: false,
         slider: true,
@@ -114,7 +114,7 @@ const initialState = {
     },
     {
       name: "Box shadow",
-      value: 0,
+      value: [1, 2, 5, "f4f4f4"],
       cssName: "boxShadow",
       element: {
         color: true,
@@ -122,6 +122,7 @@ const initialState = {
         input: false,
         dropdown: false,
       },
+      unit: ["px", "px", "px", "color"],
     },
     {
       name: "Text shadow",

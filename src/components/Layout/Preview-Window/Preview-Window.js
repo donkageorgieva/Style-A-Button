@@ -1,7 +1,8 @@
 import useButtonStyles from "../../../hooks/useButtonStyles";
 import { useSelector } from "react-redux";
 const PreviewWindow = (props) => {
-  const buttonStyles = useButtonStyles();
+  const chosenStyles = useSelector((state) => state.reducer.options);
+  const buttonStyles = useButtonStyles(chosenStyles);
   const buttonText = useSelector((state) =>
     state.reducer.options.find(
       (option) => option.name.trim() === "Button text".trim()
