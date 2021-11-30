@@ -90,7 +90,7 @@ const initialState = {
     },
     {
       name: "Border",
-      value: [1, "solid", "f6f6f6"],
+      value: [1, "solid", "#f6f6f6"],
       cssName: "border",
       unit: ["px", "solid", "color"],
       element: {
@@ -114,7 +114,7 @@ const initialState = {
     },
     {
       name: "Box shadow",
-      value: [1, 2, 5, "f4f4f4"],
+      value: [1, 2, 5, "#f4f4f4"],
       cssName: "boxShadow",
       element: {
         color: true,
@@ -126,7 +126,7 @@ const initialState = {
     },
     {
       name: "Text shadow",
-      value: 0,
+      value: [0, 0, 0, "#f4f4f4"],
       cssName: "textShadow",
       element: {
         color: true,

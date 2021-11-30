@@ -89,7 +89,15 @@ const Control = (props) => {
             value={currControl.value}
           ></input>
         ) : props.slider && props.color ? (
-          <SliderAndColor setting={props.setting} />
+          <SliderAndColor
+            setting={props.setting}
+            id={props.setting}
+            min={0}
+            max={50}
+            changeValue={(value) => {
+              addStyle(value);
+            }}
+          />
         ) : null}
       </div>
     </div>
