@@ -114,7 +114,7 @@ const initialState = {
     },
     {
       name: "Box shadow",
-      value: [1, 2, 5, "#f4f4f4"],
+      value: [5, 5, 5, "#f4f4f4"],
       cssName: "boxShadow",
       element: {
         color: true,
@@ -175,7 +175,7 @@ const buttonStyleSlice = createSlice({
             currValue.value[action.payload.index] = 0;
           }
           currValue.value[action.payload.index] = action.payload.value;
-          console.log(currValue.value);
+          console.log(action.payload.index);
           break;
       }
     },

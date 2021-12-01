@@ -16,8 +16,7 @@ const useButtonStyles = (chosenStyles) => {
       } else {
         if (Array.isArray(style.value) && Array.isArray(style.unit)) {
           let mergedValues = [];
-          style.value.forEach((value) => {
-            const valueIndex = style.value.indexOf(value);
+          style.value.forEach((value, valueIndex) => {
             if (
               style.unit[valueIndex] === value ||
               style.unit[valueIndex] === "color"

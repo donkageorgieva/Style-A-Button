@@ -17,18 +17,17 @@ const SliderAndColor = (props) => {
       return v;
     }
   });
-  const sliders = currOption.value.map((v) => {
+  const sliders = currOption.value.map((v, index) => {
     if (!isNaN(v)) {
-      const valueIndex = currOption.value.indexOf(v);
       return (
         <Slider
           id={props.setting}
           min={props.min}
           max={props.max}
           changeValue={(val) => {
-            props.changeValue(val, valueIndex);
+            props.changeValue(val, index);
           }}
-          currValue={v.value}
+          currValue={currOption.value[index]}
         />
       );
     }
