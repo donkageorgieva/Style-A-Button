@@ -17,6 +17,22 @@ const SliderAndColor = (props) => {
       return v;
     }
   });
+  const sliders = currOption.value.map((v) => {
+    if (!isNaN(v)) {
+      const valueIndex = currOption.value.indexOf(v);
+      return (
+        <Slider
+          id={props.setting}
+          min={props.min}
+          max={props.max}
+          changeValue={(val) => {
+            props.changeValue(val, valueIndex);
+          }}
+          currValue={v.value}
+        />
+      );
+    }
+  });
 
   return (
     <React.Fragment>
@@ -27,13 +43,7 @@ const SliderAndColor = (props) => {
             style={{ backgroundColor: color }}
             onClick={toggleHandler}
           ></button>
-          <Slider
-            id={props.setting}
-            min={props.min}
-            max={props.max}
-            changeValue={props.changeValue}
-            currValue={props.value}
-          />
+          <div>{sliders}</div>
         </div>
       ) : (
         <ChromePicker />

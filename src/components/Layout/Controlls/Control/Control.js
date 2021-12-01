@@ -12,12 +12,23 @@ const Control = (props) => {
       (option) => option.name.trim() === props.setting.trim()
     )
   );
-  console.log(currControl);
+
   const addStyle = (value) => {
     dispatch(
       buttonStyleActions.changeStyle({
         name: props.setting,
         value,
+        type: "SINGLE_VALUE",
+      })
+    );
+  };
+  const addMultipleStyles = (value, index) => {
+    dispatch(
+      buttonStyleActions.changeStyle({
+        name: props.setting,
+        value,
+        type: "MULTIPLE_VALUES",
+        index,
       })
     );
   };
@@ -94,8 +105,8 @@ const Control = (props) => {
             id={props.setting}
             min={0}
             max={50}
-            changeValue={(value) => {
-              addStyle(value);
+            changeValue={(value, index) => {
+              addMultipleStyles(value, index);
             }}
           />
         ) : null}

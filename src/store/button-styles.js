@@ -104,7 +104,7 @@ const initialState = {
       name: "Border radius",
       value: 0,
       cssName: "borderRadius",
-      unit: ["px", "color"],
+      unit: "px",
       element: {
         color: false,
         slider: true,
@@ -166,7 +166,18 @@ const buttonStyleSlice = createSlice({
       const currValue = state.options.find(
         (option) => option.name.trim() === action.payload.name.trim()
       );
-      currValue.value = action.payload.value;
+      switch (action.payload.type) {
+        case "SINGLE_VALUE":
+          currValue.value = action.payload.value;
+          break;
+        case "MULTIPLE_VALUES":
+          if (action.payload.value <= 0) {
+            currValue.value[action.payload.index] = 0;
+          }
+          currValue.value[action.payload.index] = action.payload.value;
+          console.log(currValue.value);
+          break;
+      }
     },
   },
 });
