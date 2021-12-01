@@ -8,6 +8,7 @@ const PreviewWindow = (props) => {
       (option) => option.name.trim() === "Button text".trim()
     )
   );
+  console.log(buttonStyles);
   return (
     <div className="dark:bg-indigo-900 p-4">
       <button style={buttonStyles}>{buttonText.value}</button>

@@ -126,7 +126,7 @@ const initialState = {
     },
     {
       name: "Text shadow",
-      value: [0, 0, 0, "#f4f4f4"],
+      value: [0, 0, 0, "#242427"],
       cssName: "textShadow",
       element: {
         color: true,
@@ -134,6 +134,7 @@ const initialState = {
         input: false,
         dropdown: false,
       },
+      unit: ["px", "px", "px", "color"],
     },
     {
       name: "Button text",
