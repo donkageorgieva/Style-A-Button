@@ -40,11 +40,14 @@ const Control = (props) => {
   };
   return (
     <div className="my-4">
-      <div className="flex items-center justify-between">
-        <h5 className=" text-sm text-gray-800 dark:text-indigo-200 transition duration-400">
+      <div
+        className="flex items-center justify-between cursor-pointer "
+        onClick={toggleControlHandler}
+      >
+        <h5 className=" text-sm text-gray-800 dark:text-indigo-200">
           {props.setting}
         </h5>
-        <button className="cursor-pointer" onClick={toggleControlHandler}>
+        <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5   text-gray-800 dark:text-indigo-200 transition duration-400"
@@ -73,6 +76,7 @@ const Control = (props) => {
               addStyle(color.hex);
             }}
             color={currControl.value}
+            onChangeComplete={toggleControlHandler}
           />
         ) : props.slider && !props.color ? (
           <Slider
@@ -111,6 +115,7 @@ const Control = (props) => {
             changeColor={(color, index) => {
               addMultipleStyles(color, index);
             }}
+            onChangeComplete={toggleControlHandler}
           />
         ) : null}
       </div>

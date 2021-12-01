@@ -55,6 +55,7 @@ const SliderAndColor = (props) => {
             props.changeColor(color.hex, colorIndex);
           }}
           color={currOption.value[colorIndex]}
+          onChangeComplete={props.onChangeComplete}
         />
       )}
     </React.Fragment>
