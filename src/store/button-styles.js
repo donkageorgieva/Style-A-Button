@@ -90,7 +90,7 @@ const initialState = {
     },
     {
       name: "Border",
-      value: [1, "solid", "#f6f6f6"],
+      value: [0, "solid", "#f6f6f6"],
       cssName: "border",
       unit: ["px", "solid", "color"],
       element: {
@@ -114,7 +114,7 @@ const initialState = {
     },
     {
       name: "Box shadow",
-      value: [5, 5, 5, "#f4f4f4"],
+      value: [0, 0, 0, "#242427"],
       cssName: "boxShadow",
       element: {
         color: true,
@@ -175,8 +175,9 @@ const buttonStyleSlice = createSlice({
             currValue.value[action.payload.index] = 0;
           }
           currValue.value[action.payload.index] = action.payload.value;
-          console.log(action.payload.index);
           break;
+        default:
+          return state;
       }
     },
   },

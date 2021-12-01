@@ -108,6 +108,9 @@ const Control = (props) => {
             changeValue={(value, index) => {
               addMultipleStyles(value, index);
             }}
+            changeColor={(color, index) => {
+              addMultipleStyles(color, index);
+            }}
           />
         ) : null}
       </div>
