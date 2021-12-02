@@ -9,8 +9,10 @@ const Layout = (props) => {
       <Header toggleMode={props.toggleMode} dark={props.dark} />
       <main className=" justify-between flex dark:bg-gray-800 bg-gray-50 w-full  overflow-hidden min-h-screen transition duration-400 items-center">
         <Controlls />
-        <PreviewWindow />
-        <CodeWindow />
+        <div className="flex justify-evenly w-full">
+          <PreviewWindow />
+          <CodeWindow />
+        </div>
       </main>
     </React.Fragment>
   );
