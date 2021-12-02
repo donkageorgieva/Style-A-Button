@@ -8,7 +8,11 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "core-js": "^3.19.2",
+    "polyfill": "^0.1.0",
     "react": "^17.0.2",
+    "react-app": "^1.1.2",
+    "react-app-polyfill": "^2.0.0",
     "react-color": "^2.17.3",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -34,6 +38,8 @@
       "not op_mini all"
     ],
     "development": [
+      "ie 9",
+      "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { buttonStyleActions } from "../../../../store/button-styles";
 import { ChromePicker } from "react-color";
 import Dropdown from "../../../UI/Dropdown/Dropdown";
+import ColorPicker from "../../../UI/ColorPicker/ColorPicker";
 import SliderAndColor from "../../../UI/Slider-And-Color/SliderAndColor";
 const Control = (props) => {
   const dispatch = useDispatch();
@@ -71,12 +72,11 @@ const Control = (props) => {
         }
       >
         {!toggle ? null : props.color && !props.slider ? (
-          <ChromePicker
+          <ColorPicker
             onChange={(color) => {
-              addStyle(color.hex);
+              addStyle(color);
             }}
-            color={currControl.value}
-            onChangeComplete={toggleControlHandler}
+            value={currControl.value}
           />
         ) : props.slider && !props.color ? (
           <Slider
