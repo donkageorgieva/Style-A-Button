@@ -1,12 +1,13 @@
 import Slider from "../../../UI/Range-Slider/Range-Slider";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { buttonStyleActions } from "../../../../store/button-styles";
-import { ChromePicker } from "react-color";
 import Dropdown from "../../../UI/Dropdown/Dropdown";
 import ColorPicker from "../../../UI/ColorPicker/ColorPicker";
 import SliderAndColor from "../../../UI/Slider-And-Color/SliderAndColor";
+import { useEffect } from "react";
 const Control = (props) => {
+  const controlRef = useRef();
   const dispatch = useDispatch();
   const currControl = useSelector((state) =>
     state.reducer.options.find(
@@ -39,8 +40,27 @@ const Control = (props) => {
     const newToggleState = !toggle;
     setToggle(newToggleState);
   };
+  const closeControl = () => {
+    const newToggleState = false;
+    setToggle(newToggleState);
+  };
+  useEffect(() => {
+    const checkIfClikedOutside = (e) => {
+      if (
+        controlRef.current &&
+        !controlRef.current.contains(e.target) &&
+        e.target.tagName.toLowerCase() !== "button"
+      ) {
+        closeControl();
+      }
+    };
+    document.addEventListener("click", checkIfClikedOutside);
+    return () => {
+      document.removeEventListener("click", checkIfClikedOutside);
+    };
+  }, []);
   return (
-    <div className="my-4">
+    <div className="my-4" ref={controlRef}>
       <div
         className="flex items-center justify-between cursor-pointer "
         onClick={toggleControlHandler}
