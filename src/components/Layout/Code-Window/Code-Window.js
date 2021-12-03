@@ -1,13 +1,17 @@
 import useButtonStyles from "../../../hooks/useButtonStyles";
 import { useSelector } from "react-redux";
+import { useRef } from "react";
 import React from "react";
 const CodeWindow = (props) => {
+  const cssTextRef = useRef();
   const chosenStyles = useSelector((state) => state.reducer.options);
   const buttonStyles = useButtonStyles(chosenStyles);
-  console.log(buttonStyles);
   const buttonClassName = chosenStyles.find(
     (option) => option.name === "Button class"
   ).value;
+  const copyToClipboardHandler = () => {
+    console.log(cssTextRef.select());
+  };
   const styleElements = [];
 
   for (const key in buttonStyles) {
@@ -17,25 +21,24 @@ const CodeWindow = (props) => {
     });
     const newCssName = seperatedWords.join("-");
 
-    styleElements.push(
-      <p key={newCssName}>
-        {" "}
-        {newCssName}: {buttonStyles[key]};{" "}
-      </p>
-    );
+    styleElements.push(`${newCssName}:  ${buttonStyles[key]}; ${"\n"}`);
   }
 
   return (
     <React.Fragment>
       <div className="p-4 m-4">
         <div className="bg-gray-100 dark:bg-gray-900   w-96 h-96 flex items-center text-sm text-gray-800 dark:text-indigo-200 justify-center  ">
-          <span>
+          <span style={{ whiteSpace: "pre" }} ref={cssTextRef}>
             {buttonClassName.trim("") !== "" ? "." + buttonClassName : "button"}{" "}
-            {"{"} {styleElements}
+            {"{\n"}
+            {styleElements}
             {"}"}
           </span>
         </div>
-        <button className="  w-96 dark:bg-indigo-700 h-24 dark:text-indigo-100">
+        <button
+          className="  w-96 dark:bg-indigo-700 h-24 dark:text-indigo-100"
+          onClick={copyToClipboardHandler}
+        >
           Copy to clipboard
         </button>
       </div>
