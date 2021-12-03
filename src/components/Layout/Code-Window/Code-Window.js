@@ -10,7 +10,8 @@ const CodeWindow = (props) => {
     (option) => option.name === "Button class"
   ).value;
   const copyToClipboardHandler = () => {
-    console.log(cssTextRef.select());
+    const content = cssTextRef.current.textContent;
+    navigator.clipboard.writeText(content);
   };
   const styleElements = [];
 
