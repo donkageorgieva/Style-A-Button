@@ -12,3 +12,8 @@ body {
   height: 6rem !important;
   border-radius: 0px !important;
 }
+.active {
+  background-color: rgb(140, 0, 255) !important;
+  transition: cubic-bezier(0.405, 0.05, 0.55, 0.95);
+  color: #e0e7ff !important;
+}

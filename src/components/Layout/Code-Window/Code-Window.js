@@ -1,8 +1,10 @@
 import useButtonStyles from "../../../hooks/useButtonStyles";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
+import { useState } from "react";
 import React from "react";
 const CodeWindow = (props) => {
+  const [textCopied, setTextCopied] = useState(false);
   const cssTextRef = useRef();
   const chosenStyles = useSelector((state) => state.reducer.options);
   const buttonStyles = useButtonStyles(chosenStyles);
@@ -10,8 +12,12 @@ const CodeWindow = (props) => {
     (option) => option.name === "Button class"
   ).value;
   const copyToClipboardHandler = () => {
+    setTextCopied(true);
     const content = cssTextRef.current.textContent;
     navigator.clipboard.writeText(content);
+    setTimeout(() => {
+      setTextCopied(false);
+    }, 4000);
   };
   const styleElements = [];
 
@@ -22,7 +28,13 @@ const CodeWindow = (props) => {
     });
     const newCssName = seperatedWords.join("-");
 
-    styleElements.push(`${newCssName}:  ${buttonStyles[key]}; ${"\n"}`);
+    styleElements.push(
+      `${newCssName}:  ${
+        newCssName === "font-family"
+          ? `"` + buttonStyles[key] + `"`
+          : buttonStyles[key]
+      }; ${"\n"}`
+    );
   }
 
   return (
@@ -37,10 +49,13 @@ const CodeWindow = (props) => {
           </span>
         </div>
         <button
-          className="  w-96 dark:bg-indigo-700 h-24 dark:text-indigo-100"
+          className={[
+            "  w-96 dark:bg-indigo-700 h-24 dark:text-indigo-100 transition duration-400 ease-in-out",
+            `${textCopied ? "active" : ""}`,
+          ].join(" ")}
           onClick={copyToClipboardHandler}
         >
-          Copy to clipboard
+          {textCopied ? "Copied" : "Copy to clipboard"}
         </button>
       </div>
     </React.Fragment>
