@@ -24,7 +24,7 @@ const Controlls = () => {
     mainButtonRef.current.focus();
   }, [mainButtonRef]);
   return (
-    <div className=" w-1/5 bg-gray-100 dark:bg-gray-900 min-h-screen ">
+    <div className=" w-3/12 bg-gray-100 dark:bg-gray-900 min-h-screen ">
       <div className="flex w-100">
         <Button
           otherClasses="flex-grow"
@@ -38,10 +38,9 @@ const Controlls = () => {
           onClick={hoverStylesHandler}
         />
       </div>
-      <div className="p-4  flex flex-col justify-center ">
-        <div className=" bg-gray-200 dark:bg-gray-800 p-4">
-          {controlElements}
-        </div>
+
+      <div className=" bg-gray-200 dark:bg-gray-800 m-4 p-4 h-screen">
+        {controlElements}
       </div>
     </div>
   );

@@ -7,9 +7,9 @@ const Layout = (props) => {
   return (
     <React.Fragment>
       <Header toggleMode={props.toggleMode} dark={props.dark} />
-      <main className=" justify-between flex dark:bg-gray-800 bg-gray-50 w-full  overflow-hidden min-h-screen transition duration-400 items-center">
+      <main className=" justify-start  flex dark:bg-gray-800 bg-gray-50 w-full  overflow-hidden  transition duration-400 items-center">
         <Controlls />
-        <div className="flex justify-evenly w-full">
+        <div className="flex justify-evenly w-full items-start h-screen ">
           <PreviewWindow />
           <CodeWindow />
         </div>

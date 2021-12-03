@@ -1,6 +1,6 @@
 import useButtonStyles from "../../../hooks/useButtonStyles";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import React from "react";
 const CodeWindow = (props) => {
   const chosenStyles = useSelector((state) => state.reducer.options);
   const buttonStyles = useButtonStyles(chosenStyles);
@@ -25,18 +25,21 @@ const CodeWindow = (props) => {
     );
   }
 
-  console.log(styleElements);
-
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 p-4 mx-4 w-1/4 min:h-80 flex items-center text-sm text-gray-800 dark:text-indigo-200 justify-center  ">
-      <div>
-        <span>
-          {buttonClassName.trim("") !== "" ? "." + buttonClassName : "button"}{" "}
-          {"{"} {styleElements}
-          {"}"}
-        </span>
+    <React.Fragment>
+      <div className="p-4 m-4">
+        <div className="bg-gray-100 dark:bg-gray-900   w-96 h-96 flex items-center text-sm text-gray-800 dark:text-indigo-200 justify-center  ">
+          <span>
+            {buttonClassName.trim("") !== "" ? "." + buttonClassName : "button"}{" "}
+            {"{"} {styleElements}
+            {"}"}
+          </span>
+        </div>
+        <button className="  w-96 dark:bg-indigo-700 h-24 dark:text-indigo-100">
+          Copy to clipboard
+        </button>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
