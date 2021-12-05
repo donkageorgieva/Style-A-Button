@@ -16,10 +16,10 @@ const PreviewWindow = (props) => {
     setBgColorChanged(color.hex);
   };
   return (
-    <div className="p-4 m-4">
+    <div className="lg:p-4 lg:m-4 p-2">
       <div
         className={[
-          ` w-96 h-96 flex justify-center items-center overflow-hidden`,
+          ` lg:w-96 w-full h-96 flex justify-center items-center overflow-hidden transition ease-in-out duration-400`,
           `${bgColorChanged ? "" : "bg-gray-100 dark:bg-gray-900"}`,
         ].join("")}
         style={bgColorChanged ? { backgroundColor: bgColorChanged } : null}

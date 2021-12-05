@@ -17,3 +17,9 @@ body {
   transition: cubic-bezier(0.405, 0.05, 0.55, 0.95);
   color: #e0e7ff !important;
 }
+
+@media (min-width: 768px) {
+  .twitter-picker {
+    border-radius: 0px !important;
+  }
+}

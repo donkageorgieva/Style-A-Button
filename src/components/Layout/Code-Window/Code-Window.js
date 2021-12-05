@@ -39,9 +39,13 @@ const CodeWindow = (props) => {
 
   return (
     <React.Fragment>
-      <div className="p-4 m-4">
-        <div className="bg-gray-100 dark:bg-gray-900   w-96 h-96 flex items-center text-sm text-gray-800 dark:text-indigo-200 justify-center  ">
-          <span style={{ whiteSpace: "pre" }} ref={cssTextRef}>
+      <div className="lg:p-4 lg:m-4 p-2">
+        <div className="bg-gray-100 dark:bg-gray-900  lg:w-96 w-96 h-96 flex items-center text-sm text-gray-800 dark:text-indigo-200 justify-center overflow-scroll ">
+          <span
+            style={{ whiteSpace: "pre" }}
+            ref={cssTextRef}
+            className="transition ease-in-out duration-400  flex justify-start items-center lg:px-8 px-4 lg:w-96 w-full  "
+          >
             {buttonClassName.trim("") !== "" ? "." + buttonClassName : "button"}{" "}
             {"{\n"}
             {styleElements}
@@ -50,7 +54,7 @@ const CodeWindow = (props) => {
         </div>
         <button
           className={[
-            "  w-96 dark:bg-indigo-700 h-24 dark:text-indigo-100 transition duration-400 ease-in-out",
+            "  lg:w-96 dark:bg-indigo-700 h-24 dark:text-indigo-100 transition duration-400 ease-in-out w-full",
             `${textCopied ? "active" : ""}`,
           ].join(" ")}
           onClick={copyToClipboardHandler}

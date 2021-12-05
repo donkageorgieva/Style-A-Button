@@ -24,7 +24,7 @@ const Controlls = () => {
     mainButtonRef.current.focus();
   }, [mainButtonRef]);
   return (
-    <div className=" w-3/12 bg-gray-100 dark:bg-gray-900 min-h-screen ">
+    <div className=" md:w-4/12 w-full bg-gray-100 dark:bg-gray-900 md:h-screen  ">
       <div className="flex w-100">
         <Button
           otherClasses="flex-grow"
@@ -39,7 +39,7 @@ const Controlls = () => {
         />
       </div>
 
-      <div className=" bg-gray-200 dark:bg-gray-800 m-4 p-4 h-screen">
+      <div className=" flex flex-wrap md:flex-col bg-gray-200 dark:bg-gray-800 m-4 p-4 md:h-screen">
         {controlElements}
       </div>
     </div>
