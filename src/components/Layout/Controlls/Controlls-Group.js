@@ -39,7 +39,7 @@ const Controlls = () => {
         />
       </div>
 
-      <div className=" flex flex-wrap md:flex-col bg-gray-200 dark:bg-gray-800 m-4 p-4 md:h-screen">
+      <div className=" flex flex-wrap md:flex-col md:flex-nowrap bg-gray-200 dark:bg-gray-800 m-4 p-4 md:h-screen">
         {controlElements}
       </div>
     </div>
