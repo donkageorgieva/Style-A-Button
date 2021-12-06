@@ -60,7 +60,7 @@ const Control = (props) => {
     };
   }, []);
   return (
-    <div className="md:my-2  md:p-0 p-2 " ref={controlRef}>
+    <div className="lg:my-2  lg:p-0 p-2 " ref={controlRef}>
       <div
         className="flex items-center justify-between cursor-pointer "
         onClick={toggleControlHandler}

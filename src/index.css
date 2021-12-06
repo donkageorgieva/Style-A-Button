@@ -7,19 +7,23 @@ body {
   margin: 0;
   font-family: "Poppins";
 }
-.twitter-picker {
-  width: 24rem !important;
-  height: 6rem !important;
-  border-radius: 0px !important;
-}
+
 .active {
   background-color: rgb(140, 0, 255) !important;
   transition: cubic-bezier(0.405, 0.05, 0.55, 0.95);
   color: #e0e7ff !important;
 }
+.twitter-picker {
+  width: 100% !important;
+  height: 6rem !important;
+  border-radius: 0px !important;
+  display: flex;
+  justify-content: center;
+}
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .twitter-picker {
-    border-radius: 0px !important;
+    width: 24rem !important;
+    height: 6rem !important;
   }
 }
