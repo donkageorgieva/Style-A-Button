@@ -7,7 +7,7 @@ const Button = forwardRef((props, ref) => {
         props.classes
           ? props.classes
           : [
-              `px-4 py-2 dark:bg-gray-700 dark:hover:bg-indigo-500 dark:text-indigo-100 dark:focus:bg-indigo-500 ${props.otherClasses}`,
+              `px-4 py-2 dark:bg-gray-700 dark:hover:bg-indigo-500   transition duration-400 ease-in-out dark:text-indigo-100 dark:focus:bg-indigo-500 ${props.otherClasses}`,
             ].join("")
       }
       onClick={props.onClick}

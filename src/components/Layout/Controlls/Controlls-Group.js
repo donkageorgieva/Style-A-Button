@@ -6,8 +6,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { buttonStyleActions } from "../../../store/button-styles";
 const Controlls = () => {
   const controlOptions = useSelector((state) => state.reducer.options);
+  const mode = useSelector((state) => state.reducer.mode);
   const dispatch = useDispatch();
   const controlElements = controlOptions.map((option) => {
+    if (mode !== "style" && option.name === "Button class") {
+      return;
+    }
     return (
       <Control
         setting={option.name}
@@ -20,7 +24,6 @@ const Controlls = () => {
     );
   });
   const buttonStylesHandler = (e) => {
-    e.target.focus();
     dispatch(
       buttonStyleActions.changeMode({
         mode: "style",
@@ -28,28 +31,27 @@ const Controlls = () => {
     );
   };
   const hoverStylesHandler = (e) => {
-    e.target.focus();
     dispatch(
       buttonStyleActions.changeMode({
         mode: "hover",
       })
     );
   };
-  const mainButtonRef = useRef(null);
-  useEffect(() => {
-    mainButtonRef.current.focus();
-  }, [mainButtonRef]);
+
   return (
     <div className=" lg:w-7/12  w-full bg-gray-100 dark:bg-gray-900 lg:h-screen   ">
       <div className="flex w-100">
         <Button
-          otherClasses="flex-grow"
+          otherClasses={["flex-grow ", mode === "style" ? "active" : ""].join(
+            " "
+          )}
           text="Button styles"
-          ref={mainButtonRef}
           onClick={buttonStylesHandler}
         />
         <Button
-          otherClasses="flex-grow"
+          otherClasses={["flex-grow", mode !== "style" ? "active" : ""].join(
+            " "
+          )}
           text="Hover styles"
           onClick={hoverStylesHandler}
         />

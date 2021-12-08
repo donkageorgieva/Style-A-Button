@@ -7,7 +7,7 @@ const initialState = {
     {
       name: "Background color",
       value: "#C63CD2",
-      hoverValue: "#FFE61B",
+      hoverValue: "#E02FA6",
       cssName: "backgroundColor",
       unit: "color",
       element: {
@@ -71,7 +71,7 @@ const initialState = {
     },
     {
       name: "Horizontal padding",
-      value: 25,
+      value: 30,
       hoverValue: 40,
       cssName: ["paddingRight", "paddingLeft"],
       unit: "px",
@@ -84,8 +84,8 @@ const initialState = {
     },
     {
       name: "Vertical padding",
-      value: 5,
-      hoverValue: 15,
+      value: 10,
+      hoverValue: 20,
       cssName: ["paddingTop", "paddingBottom"],
       unit: "px",
       element: {
@@ -111,7 +111,7 @@ const initialState = {
     {
       name: "Border radius",
       value: 0,
-      hoverValue: 2,
+      hoverValue: 10,
       cssName: "borderRadius",
       unit: "px",
       element: {

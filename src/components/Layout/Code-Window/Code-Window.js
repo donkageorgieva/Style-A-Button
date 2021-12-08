@@ -7,10 +7,16 @@ const CodeWindow = (props) => {
   const [textCopied, setTextCopied] = useState(false);
   const cssTextRef = useRef();
   const chosenStyles = useSelector((state) => state.reducer.options);
-  const buttonStyles = useButtonStyles(chosenStyles);
+  const mode = useSelector((state) =>
+    state.reducer.mode === "style" ? true : false
+  );
+
+  const buttonStyles = useButtonStyles(chosenStyles, mode);
   const buttonClassName = chosenStyles.find(
     (option) => option.name === "Button class"
   ).value;
+  const cssTag =
+    buttonClassName.trim("") !== "" ? "." + buttonClassName : "button";
   const copyToClipboardHandler = () => {
     setTextCopied(true);
     const content = cssTextRef.current.textContent;
@@ -46,8 +52,7 @@ const CodeWindow = (props) => {
             ref={cssTextRef}
             className="transition ease-in-out duration-400  flex justify-start items-center lg:px-8 md:px-4 lg:w-96 md:w-full  "
           >
-            {buttonClassName.trim("") !== "" ? "." + buttonClassName : "button"}{" "}
-            {"{\n"}
+            {mode ? cssTag : cssTag + ":hover"} {"{\n"}
             {styleElements}
             {"}"}
           </span>
