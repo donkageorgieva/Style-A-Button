@@ -15,6 +15,8 @@ const Control = (props) => {
     )
   );
   const stateMode = useSelector((state) => state.reducer.mode);
+  const currValue =
+    stateMode === "style" ? currControl.value : currControl.hoverValuee;
   const addStyle = (value) => {
     dispatch(
       buttonStyleActions.changeStyle({
@@ -110,21 +112,15 @@ const Control = (props) => {
             changeValue={(value) => {
               addStyle(value);
             }}
-            currValue={
-              stateMode === "style"
-                ? currControl.value
-                : currControl.hoverValuee
-            }
+            currValue={currValue}
           />
-        ) : props.dropdown ? (
+        ) : props.dropdown && !props.input ? (
           <Dropdown
             options={props.unit}
             changeValue={(e) => {
               addStyle(e.target.value);
             }}
-            currValue={
-              stateMode === "style" ? currControl.value : currControl.hoverValue
-            }
+            currValue={currValue}
           />
         ) : props.input ? (
           <input
@@ -134,9 +130,7 @@ const Control = (props) => {
             onChange={(e) => {
               addStyle(e.target.value);
             }}
-            value={
-              stateMode === "style" ? currControl.value : currControl.hoverValue
-            }
+            value={currValue}
           ></input>
         ) : props.slider && props.color ? (
           <SliderAndColor

@@ -169,6 +169,19 @@ const initialState = {
         dropdown: false,
       },
     },
+    {
+      name: "Transition",
+      value: "0.4s ease-in-out",
+      hoverValue: "0.4s ease-in-out",
+      cssName: "transition",
+      unit: ["0.4s ease-in-out", "0.4s ease-in", "0.4s ease"],
+      element: {
+        color: false,
+        slider: false,
+        input: false,
+        dropdown: true,
+      },
+    },
   ],
 };
 
