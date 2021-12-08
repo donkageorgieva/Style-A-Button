@@ -4,9 +4,10 @@ import { useState } from "react";
 import { TwitterPicker } from "react-color";
 import React from "react";
 const PreviewWindow = (props) => {
-  const chosenStyles = useSelector((state) => state.reducer.options);
-  const buttonStyles = useButtonStyles(chosenStyles);
   const [bgColorChanged, setBgColorChanged] = useState(null);
+  const [hover, setHover] = useState(false);
+  const chosenStyles = useSelector((state) => state.reducer.options);
+  const buttonStyles = useButtonStyles(chosenStyles, hover);
   const buttonText = useSelector((state) =>
     state.reducer.options.find(
       (option) => option.name.trim() === "Button text".trim()
@@ -14,6 +15,9 @@ const PreviewWindow = (props) => {
   );
   const changeBgColor = (color) => {
     setBgColorChanged(color.hex);
+  };
+  const hoverHandler = (val) => {
+    setHover(val);
   };
   return (
     <div className="lg:p-4 lg:m-4  order-first lg:order-none w-screen flex flex-col">
@@ -24,7 +28,17 @@ const PreviewWindow = (props) => {
         ].join("")}
         style={bgColorChanged ? { backgroundColor: bgColorChanged } : null}
       >
-        <button style={buttonStyles}>{buttonText.value}</button>
+        <button
+          style={buttonStyles}
+          onMouseEnter={() => {
+            hoverHandler(true);
+          }}
+          onMouseLeave={() => {
+            hoverHandler(false);
+          }}
+        >
+          {buttonText.value}
+        </button>
       </div>
       <TwitterPicker onChange={changeBgColor} />
     </div>

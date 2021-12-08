@@ -7,6 +7,7 @@ const initialState = {
     {
       name: "Background color",
       value: "#C63CD2",
+      hoverValue: "#FFE61B",
       cssName: "backgroundColor",
       unit: "color",
       element: {
@@ -19,6 +20,7 @@ const initialState = {
     {
       name: "Color",
       value: "#FFFFFF",
+      hoverValue: "#FFFFFF",
       cssName: "color",
       unit: "color",
       element: {
@@ -31,6 +33,7 @@ const initialState = {
     {
       name: "Font",
       value: "Roboto",
+      hoverValue: "Roboto",
       cssName: "fontFamily",
       unit: ["Roboto", "Montserrat"],
       element: {
@@ -43,6 +46,7 @@ const initialState = {
     {
       name: "Font size",
       value: 16,
+      hoverValue: 16,
       cssName: "fontSize",
       unit: "px",
       element: {
@@ -55,6 +59,7 @@ const initialState = {
     {
       name: "Font weight",
       value: 400,
+      hoverValue: 400,
       cssName: "fontWeight",
       unit: [100, 300, 400, 500],
       element: {
@@ -67,6 +72,7 @@ const initialState = {
     {
       name: "Horizontal padding",
       value: 25,
+      hoverValue: 40,
       cssName: ["paddingRight", "paddingLeft"],
       unit: "px",
       element: {
@@ -79,6 +85,7 @@ const initialState = {
     {
       name: "Vertical padding",
       value: 5,
+      hoverValue: 15,
       cssName: ["paddingTop", "paddingBottom"],
       unit: "px",
       element: {
@@ -91,6 +98,7 @@ const initialState = {
     {
       name: "Border",
       value: [0, "solid", "#f6f6f6"],
+      hoverValue: [0, "solid", "#f6f6f6"],
       cssName: "border",
       unit: ["px", "solid", "color"],
       element: {
@@ -103,6 +111,7 @@ const initialState = {
     {
       name: "Border radius",
       value: 0,
+      hoverValue: 2,
       cssName: "borderRadius",
       unit: "px",
       element: {
@@ -115,6 +124,7 @@ const initialState = {
     {
       name: "Box shadow",
       value: [0, 0, 0, "#242427"],
+      hoverValue: [0, 0, 0, "#242427"],
       cssName: "boxShadow",
       element: {
         color: true,
@@ -127,6 +137,7 @@ const initialState = {
     {
       name: "Text shadow",
       value: [0, 0, 0, "#242427"],
+      hoverValue: [0, 0, 0, "#242427"],
       cssName: "textShadow",
       element: {
         color: true,
@@ -139,6 +150,7 @@ const initialState = {
     {
       name: "Button text",
       value: "Button text",
+      hoverValue: "Button text",
       element: {
         color: false,
         slider: false,
@@ -149,6 +161,7 @@ const initialState = {
     {
       name: "Button class",
       value: "",
+      hoverValue: "",
       element: {
         color: false,
         slider: false,
@@ -157,7 +170,6 @@ const initialState = {
       },
     },
   ],
-  hoverStyles: [],
 };
 
 const buttonStyleSlice = createSlice({
@@ -165,33 +177,57 @@ const buttonStyleSlice = createSlice({
   initialState,
   reducers: {
     changeStyle(state, action) {
-      switch (action.payload.mode) {
-        case "style":
-          const currValue = state.options.find(
-            (option) => option.name.trim() === action.payload.name.trim()
-          );
-          switch (action.payload.type) {
-            case "SINGLE_VALUE":
+      const currValue = state.options.find(
+        (option) => option.name.trim() === action.payload.name.trim()
+      );
+      const changeVlues = (type, value, index, hover = false) => {
+        switch (action.payload.type) {
+          case "SINGLE_VALUE":
+            if (!hover) {
               currValue.value = action.payload.value;
-              break;
-            case "MULTIPLE_VALUES":
+            } else {
+              currValue.hoverValue = action.payload.value;
+            }
+
+            break;
+          case "MULTIPLE_VALUES":
+            if (!hover) {
               if (action.payload.value <= 0) {
                 currValue.value[action.payload.index] = 0;
               }
               currValue.value[action.payload.index] = action.payload.value;
-              break;
-            default:
-              return state;
-          }
+            } else {
+              if (action.payload.value <= 0) {
+                currValue.hoverValue[action.payload.index] = 0;
+              }
+              currValue.hoverValue[action.payload.index] = action.payload.value;
+            }
+
+            break;
+          default:
+            return state;
+        }
+      };
+      switch (action.payload.mode) {
+        case "style":
+          changeVlues(
+            action.payload.value,
+            action.payload.type,
+            action.payload.index
+          );
           break;
         case "hover":
-          console.log("hover style");
+          changeVlues(
+            action.payload.value,
+            action.payload.type,
+            action.payload.index,
+            true
+          );
           break;
       }
     },
     changeMode(state, action) {
       state.mode = action.payload.mode;
-      console.log(action.payload.mode);
     },
   },
 });

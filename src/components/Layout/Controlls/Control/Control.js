@@ -98,7 +98,9 @@ const Control = (props) => {
             onChange={(color) => {
               addStyle(color);
             }}
-            value={currControl.value}
+            value={
+              stateMode === "style" ? currControl.value : currControl.hoverValue
+            }
           />
         ) : props.slider && !props.color ? (
           <Slider
@@ -108,7 +110,11 @@ const Control = (props) => {
             changeValue={(value) => {
               addStyle(value);
             }}
-            currValue={currControl.value}
+            currValue={
+              stateMode === "style"
+                ? currControl.value
+                : currControl.hoverValuee
+            }
           />
         ) : props.dropdown ? (
           <Dropdown
@@ -116,7 +122,9 @@ const Control = (props) => {
             changeValue={(e) => {
               addStyle(e.target.value);
             }}
-            currValue={currControl.value}
+            currValue={
+              stateMode === "style" ? currControl.value : currControl.hoverValue
+            }
           />
         ) : props.input ? (
           <input
@@ -126,7 +134,9 @@ const Control = (props) => {
             onChange={(e) => {
               addStyle(e.target.value);
             }}
-            value={currControl.value}
+            value={
+              stateMode === "style" ? currControl.value : currControl.hoverValue
+            }
           ></input>
         ) : props.slider && props.color ? (
           <SliderAndColor

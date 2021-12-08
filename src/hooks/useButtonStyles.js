@@ -1,22 +1,20 @@
-const useButtonStyles = (chosenStyles) => {
+const useButtonStyles = (chosenStyles, hover = false) => {
   const styleObjectHandler = (style) => {
-    if (
-      style.cssName === undefined ||
-      style.value === 0 ||
-      style.value.length <= 0
-    ) {
+    let styleVal = !hover ? style.value : style.hoverValue;
+
+    if (style.cssName === undefined || styleVal === 0 || styleVal.length <= 0) {
       return;
     } else {
       if (Array.isArray(style.cssName)) {
         style.cssName.forEach((styleVariant) => {
-          buttonStyles[styleVariant] = `${style.value}${
+          buttonStyles[styleVariant] = `${styleVal}${
             style.unit ? style.unit : null
           }`;
         });
       } else {
-        if (Array.isArray(style.value) && Array.isArray(style.unit)) {
+        if (Array.isArray(styleVal) && Array.isArray(style.unit)) {
           let mergedValues = [];
-          style.value.forEach((value, valueIndex) => {
+          styleVal.forEach((value, valueIndex) => {
             if (
               style.unit[valueIndex] === value ||
               style.unit[valueIndex] === "color"
@@ -29,7 +27,7 @@ const useButtonStyles = (chosenStyles) => {
 
           buttonStyles[style.cssName] = mergedValues.join(" ");
         } else {
-          buttonStyles[style.cssName] = `${style.value}${
+          buttonStyles[style.cssName] = `${styleVal}${
             style.unit === "px" ? style.unit : ""
           }`;
         }

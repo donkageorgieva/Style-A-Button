@@ -1,21 +1,22 @@
 import Slider from "../Range-Slider/Range-Slider";
 import { useSelector } from "react-redux";
-import React, { useState } from "react";
-import useButtonStyles from "../../../hooks/useButtonStyles";
+import React from "react";
 import ColorPicker from "../ColorPicker/ColorPicker";
 const SliderAndColor = (props) => {
   const currOption = useSelector((state) =>
     state.reducer.options.find((option) => option.name === props.setting)
   );
-
-  const colorhex = currOption.value.find((v) => {
+  const currMode = useSelector((state) => state.reducer.mode);
+  const chosenValue =
+    currMode === "style" ? currOption.value : currOption.hoverValue;
+  const colorhex = chosenValue.find((v) => {
     if (v.toString().includes("#")) {
       return v;
     }
   });
-  const colorIndex = currOption.value.indexOf(colorhex);
+  const colorIndex = chosenValue.indexOf(colorhex);
 
-  const sliders = currOption.value.map((v, index) => {
+  const sliders = chosenValue.map((v, index) => {
     console.log(index, v);
     if (!isNaN(v)) {
       return (
@@ -26,7 +27,7 @@ const SliderAndColor = (props) => {
           changeValue={(val) => {
             props.changeValue(val, index);
           }}
-          currValue={currOption.value[index]}
+          currValue={chosenValue[index]}
         />
       );
     }
@@ -40,7 +41,7 @@ const SliderAndColor = (props) => {
             onChange={(color) => {
               props.changeColor(color, colorIndex);
             }}
-            value={currOption.value[colorIndex]}
+            value={chosenValue[colorIndex]}
           />
         </div>
 
