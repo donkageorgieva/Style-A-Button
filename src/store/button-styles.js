@@ -171,8 +171,8 @@ const initialState = {
     },
     {
       name: "Transition",
-      value: "0.4s ease-in-out",
-      hoverValue: "0.4s ease-in-out",
+      value: "all 0.4s ease-in-out",
+      hoverValue: "all 0.4s ease-in-out",
       cssName: "transition",
       unit: ["0.4s ease-in-out", "0.4s ease-in", "0.4s ease"],
       element: {

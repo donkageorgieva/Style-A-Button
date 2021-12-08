@@ -6,6 +6,7 @@ import Dropdown from "../../../UI/Dropdown/Dropdown";
 import ColorPicker from "../../../UI/ColorPicker/ColorPicker";
 import SliderAndColor from "../../../UI/Slider-And-Color/SliderAndColor";
 import { useEffect } from "react";
+import { Transition } from "react-transition-group";
 const Control = (props) => {
   const controlRef = useRef();
   const dispatch = useDispatch();
@@ -41,8 +42,7 @@ const Control = (props) => {
 
   const [toggle, setToggle] = useState(false);
   const toggleControlHandler = () => {
-    const newToggleState = !toggle;
-    setToggle(newToggleState);
+    setToggle(!toggle);
   };
   const closeControl = () => {
     const newToggleState = false;
@@ -88,66 +88,77 @@ const Control = (props) => {
           </svg>
         </button>
       </div>
-      <div
-        className={
-          !toggle
-            ? "opacity-0 transition duration-400 w-0 h-0"
-            : "transition-duration-400"
-        }
-      >
-        {!toggle ? null : props.color && !props.slider ? (
-          <ColorPicker
-            onChange={(color) => {
-              addStyle(color);
-            }}
-            value={
-              stateMode === "style" ? currControl.value : currControl.hoverValue
-            }
-          />
-        ) : props.slider && !props.color ? (
-          <Slider
-            id={props.setting}
-            min={0}
-            max={50}
-            changeValue={(value) => {
-              addStyle(value);
-            }}
-            currValue={currValue}
-          />
-        ) : props.dropdown && !props.input ? (
-          <Dropdown
-            options={props.unit}
-            changeValue={(e) => {
-              addStyle(e.target.value);
-            }}
-            currValue={currValue}
-          />
-        ) : props.input ? (
-          <input
-            onClick={(e) => {
-              e.target.select();
-            }}
-            onChange={(e) => {
-              addStyle(e.target.value);
-            }}
-            value={currValue}
-          ></input>
-        ) : props.slider && props.color ? (
-          <SliderAndColor
-            setting={props.setting}
-            id={props.setting}
-            min={0}
-            max={50}
-            changeValue={(value, index) => {
-              addMultipleStyles(value, index);
-            }}
-            changeColor={(color, index) => {
-              addMultipleStyles(color, index);
-            }}
-            onChangeComplete={toggleControlHandler}
-          />
-        ) : null}
-      </div>
+      <Transition in={toggle} timeout={400}>
+        {(state) => {
+          console.log(state);
+          return (
+            <div
+              className={
+                state === "exited"
+                  ? "opacity-0 transform translate-y-1  scale-0 transition-all duration-400 ease-in-out"
+                  : "opacity-100 transform translate-y-0 translate-x-0 transition-all duration-400 ease-in-out scale-100"
+              }
+            >
+              {!toggle ? null : props.color && !props.slider ? (
+                <ColorPicker
+                  onChange={(color) => {
+                    addStyle(color);
+                  }}
+                  value={
+                    stateMode === "style"
+                      ? currControl.value
+                      : currControl.hoverValue
+                  }
+                />
+              ) : props.slider && !props.color ? (
+                <Slider
+                  id={props.setting}
+                  min={0}
+                  max={50}
+                  changeValue={(value) => {
+                    addStyle(value);
+                  }}
+                  currValue={currValue}
+                  unit="px"
+                />
+              ) : props.dropdown && !props.input ? (
+                <Dropdown
+                  options={props.unit}
+                  changeValue={(e) => {
+                    addStyle(e.target.value);
+                  }}
+                  currValue={currValue}
+                />
+              ) : props.input ? (
+                <input
+                  onClick={(e) => {
+                    e.target.select();
+                  }}
+                  onChange={(e) => {
+                    addStyle(e.target.value);
+                  }}
+                  value={currValue}
+                ></input>
+              ) : props.slider && props.color ? (
+                <SliderAndColor
+                  setting={props.setting}
+                  id={props.setting}
+                  min={0}
+                  max={50}
+                  changeValue={(value, index) => {
+                    addMultipleStyles(value, index);
+                  }}
+                  changeColor={(color, index) => {
+                    addMultipleStyles(color, index);
+                  }}
+                  onChangeComplete={toggleControlHandler}
+                  unit="px"
+                />
+              ) : null}
+            </div>
+          );
+        }}
+      </Transition>
     </div>
   );
 };

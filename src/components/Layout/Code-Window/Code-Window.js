@@ -45,14 +45,14 @@ const CodeWindow = (props) => {
 
   return (
     <React.Fragment>
-      <div className="lg:p-4 lg:m-4 md:p-2 w-screen lg:overflow-hidden flex flex-col">
+      <div className="lg:p-4 lg:m-4 md:p-2 w-screen lg:overflow-hidden flex flex-col ">
         <div className="bg-gray-100 dark:bg-gray-900 w-full lg:w-96  h-96 flex items-center text-sm text-gray-800 dark:text-indigo-200 justify-center order-last lg:order-none">
           <span
             style={{ whiteSpace: "pre" }}
             ref={cssTextRef}
             className="transition ease-in-out duration-400  flex justify-start items-center lg:px-8 md:px-4 lg:w-96 md:w-full  "
           >
-            {mode ? cssTag : cssTag + ":hover"} {"{\n"}
+            {!mode ? cssTag : cssTag + ":hover"} {"{\n"}
             {styleElements}
             {"}"}
           </span>

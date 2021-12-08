@@ -23,7 +23,7 @@ const Slider = (props) => {
         />
         <span className="text-gray-800 dark:text-indigo-200 text-sm ">
           {" "}
-          {props.currValue}{" "}
+          {props.currValue + props.unit}{" "}
         </span>
       </div>
     </React.Fragment>

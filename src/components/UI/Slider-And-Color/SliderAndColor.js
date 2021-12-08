@@ -28,6 +28,7 @@ const SliderAndColor = (props) => {
             props.changeValue(val, index);
           }}
           currValue={chosenValue[index]}
+          unit={props.unit}
         />
       );
     }
