@@ -16,7 +16,7 @@ const Control = (props) => {
   );
   const stateMode = useSelector((state) => state.reducer.mode);
   const currValue =
-    stateMode === "style" ? currControl.value : currControl.hoverValuee;
+    stateMode === "style" ? currControl.value : currControl.hoverValue;
   const addStyle = (value) => {
     dispatch(
       buttonStyleActions.changeStyle({

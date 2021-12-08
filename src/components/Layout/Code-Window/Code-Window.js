@@ -8,7 +8,7 @@ const CodeWindow = (props) => {
   const cssTextRef = useRef();
   const chosenStyles = useSelector((state) => state.reducer.options);
   const mode = useSelector((state) =>
-    state.reducer.mode === "style" ? true : false
+    state.reducer.mode === "hover" ? true : false
   );
 
   const buttonStyles = useButtonStyles(chosenStyles, mode);
