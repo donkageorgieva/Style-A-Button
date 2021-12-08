@@ -20,7 +20,9 @@ body {
   display: flex;
   justify-content: center;
 }
-
+.chrome-picker {
+  width: 100% !important;
+}
 @media (min-width: 1024px) {
   .twitter-picker {
     width: 24rem !important;

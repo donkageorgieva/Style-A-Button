@@ -14,13 +14,14 @@ const Control = (props) => {
       (option) => option.name.trim() === props.setting.trim()
     )
   );
-
+  const stateMode = useSelector((state) => state.reducer.mode);
   const addStyle = (value) => {
     dispatch(
       buttonStyleActions.changeStyle({
         name: props.setting,
         value,
         type: "SINGLE_VALUE",
+        mode: stateMode,
       })
     );
   };
@@ -31,6 +32,7 @@ const Control = (props) => {
         value,
         type: "MULTIPLE_VALUES",
         index,
+        mode: stateMode,
       })
     );
   };
@@ -118,6 +120,9 @@ const Control = (props) => {
           />
         ) : props.input ? (
           <input
+            onClick={(e) => {
+              e.target.select();
+            }}
             onChange={(e) => {
               addStyle(e.target.value);
             }}

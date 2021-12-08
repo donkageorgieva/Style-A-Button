@@ -157,6 +157,7 @@ const initialState = {
       },
     },
   ],
+  hoverStyles: [],
 };
 
 const buttonStyleSlice = createSlice({
@@ -164,22 +165,33 @@ const buttonStyleSlice = createSlice({
   initialState,
   reducers: {
     changeStyle(state, action) {
-      const currValue = state.options.find(
-        (option) => option.name.trim() === action.payload.name.trim()
-      );
-      switch (action.payload.type) {
-        case "SINGLE_VALUE":
-          currValue.value = action.payload.value;
-          break;
-        case "MULTIPLE_VALUES":
-          if (action.payload.value <= 0) {
-            currValue.value[action.payload.index] = 0;
+      switch (action.payload.mode) {
+        case "style":
+          const currValue = state.options.find(
+            (option) => option.name.trim() === action.payload.name.trim()
+          );
+          switch (action.payload.type) {
+            case "SINGLE_VALUE":
+              currValue.value = action.payload.value;
+              break;
+            case "MULTIPLE_VALUES":
+              if (action.payload.value <= 0) {
+                currValue.value[action.payload.index] = 0;
+              }
+              currValue.value[action.payload.index] = action.payload.value;
+              break;
+            default:
+              return state;
           }
-          currValue.value[action.payload.index] = action.payload.value;
           break;
-        default:
-          return state;
+        case "hover":
+          console.log("hover style");
+          break;
       }
+    },
+    changeMode(state, action) {
+      state.mode = action.payload.mode;
+      console.log(action.payload.mode);
     },
   },
 });

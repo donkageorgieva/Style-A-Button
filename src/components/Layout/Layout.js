@@ -9,7 +9,6 @@ const Layout = (props) => {
       <Header toggleMode={props.toggleMode} dark={props.dark} />
       <main className=" justify-start md:justify-items-stretch flex flex-col lg:flex-row dark:bg-gray-800 bg-gray-50 w-full lg:h-screen  md:overflow-hidden overflow:auto transition duration-400 items-center">
         <Controlls />
-
         <PreviewWindow />
         <CodeWindow />
       </main>

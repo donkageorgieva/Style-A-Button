@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { useRef } from "react";
 import Button from "../../UI/Button/Button";
 import Control from "./Control/Control";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { buttonStyleActions } from "../../../store/button-styles";
 const Controlls = () => {
   const controlOptions = useSelector((state) => state.reducer.options);
+  const dispatch = useDispatch();
   const controlElements = controlOptions.map((option) => {
     return (
       <Control
@@ -17,8 +19,22 @@ const Controlls = () => {
       />
     );
   });
-  const buttonStylesHandler = () => {};
-  const hoverStylesHandler = () => {};
+  const buttonStylesHandler = (e) => {
+    e.target.focus();
+    dispatch(
+      buttonStyleActions.changeMode({
+        mode: "style",
+      })
+    );
+  };
+  const hoverStylesHandler = (e) => {
+    e.target.focus();
+    dispatch(
+      buttonStyleActions.changeMode({
+        mode: "hover",
+      })
+    );
+  };
   const mainButtonRef = useRef(null);
   useEffect(() => {
     mainButtonRef.current.focus();
