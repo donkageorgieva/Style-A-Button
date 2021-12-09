@@ -59,7 +59,7 @@ const CodeWindow = (props) => {
         </div>
         <button
           className={[
-            "   bg-indigo-700 h-24  text-indigo-100 transition duration-400 ease-in-out w-full   lg:w-96  shadow-md",
+            "   dark:bg-indigo-700 bg-indigo-400 h-24  text-white dark:text-indigo-100 transition duration-400 ease-in-out w-full   lg:w-96  shadow-md",
             `${textCopied ? "active" : ""}`,
           ].join(" ")}
           onClick={copyToClipboardHandler}
