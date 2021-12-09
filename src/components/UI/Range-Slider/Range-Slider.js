@@ -18,7 +18,7 @@ const Slider = (props) => {
           }}
           step="1"
           id="slider"
-          className="w-full h-7 z-0 "
+          className="w-5/12 lg:w-full h-7 z-0 "
           name="range"
         />
         <span className="text-gray-800 dark:text-indigo-200 text-sm ">

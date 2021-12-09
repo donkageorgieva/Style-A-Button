@@ -90,7 +90,6 @@ const Control = (props) => {
       </div>
       <Transition in={toggle} timeout={400}>
         {(state) => {
-          console.log(state);
           return (
             <div
               className={
