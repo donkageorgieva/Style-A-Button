@@ -45,7 +45,7 @@ const CodeWindow = (props) => {
 
   return (
     <React.Fragment>
-      <div className=" lg:p-4 lg:m-4 w-screen flex flex-col">
+      <div className=" lg:h-full lg:justify-center lg:mx-4 w-screen flex flex-col">
         <div className="bg-white dark:bg-gray-900  lg:w-96 w-full py-8 lg:h-96 flex items-center text-sm text-gray-800 dark:text-indigo-200 justify-center order-last lg:order-none">
           <span
             style={{ whiteSpace: "pre" }}
