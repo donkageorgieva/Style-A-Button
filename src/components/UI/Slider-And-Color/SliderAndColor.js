@@ -37,7 +37,7 @@ const SliderAndColor = (props) => {
   return (
     <React.Fragment>
       <div className="flex items-center justify-between">
-        <div className="lg:w-6/12 w-10 mr-2 z-10">
+        <div className="lg:w-6/12 w-1/2 mr-2 z-10">
           <ColorPicker
             onChange={(color) => {
               props.changeColor(color, colorIndex);
