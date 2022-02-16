@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React from "react";
 import Button from "../../UI/Button/Button";
 import Control from "./Control/Control";

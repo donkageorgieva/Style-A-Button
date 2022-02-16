@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import Slider from "../Range-Slider/Range-Slider";
 import { useSelector } from "react-redux";
 import React from "react";
