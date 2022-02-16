@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useRef } from "react";
+import React from "react";
 import Button from "../../UI/Button/Button";
 import Control from "./Control/Control";
 import { useSelector, useDispatch } from "react-redux";
@@ -39,7 +38,7 @@ const Controlls = () => {
   };
 
   return (
-    <div className=" lg:w-7/12  w-full  dark:bg-gray-900 lg:h-screen   ">
+    <div className=" lg:w-7/12  w-full  dark:bg-gray-900 lg:h-screen bg-gray-200   ">
       <div className="flex w-100">
         <Button
           otherClasses={["flex-grow  ", mode === "style" ? "active" : ""].join(
@@ -57,7 +56,7 @@ const Controlls = () => {
         />
       </div>
 
-      <div className=" flex flex-wrap lg:flex-col lg:flex-nowrap bg-gray-200 dark:bg-gray-800 m-4 p-4 lg:h-screen">
+      <div className=" flex flex-wrap lg:flex-col lg:flex-nowrap bg-gray-50 drop-shadow-sm dark:bg-gray-800 m-4 p-4 lg:h-screen">
         {controlElements}
       </div>
     </div>
