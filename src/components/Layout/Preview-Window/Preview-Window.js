@@ -20,10 +20,10 @@ const PreviewWindow = (props) => {
     setHover(val);
   };
   return (
-    <div className="lg:h-full lg:mx-4 lg:justify-center order-first lg:order-none w-screen flex flex-col">
+    <div className="lg:h-full lg:mx-4 lg:justify-center xl:items-center order-first lg:order-none w-screen lg:w-1/3 xl:w-2/3 flex flex-col">
       <div
         className={[
-          ` lg:w-96 w-full h-40 lg:h-96  flex justify-center items-center overflow-hidden transition ease-in-out duration-400 order-last md:order-first `,
+          ` lg:w-80 xl:w-96  w-full h-40 lg:h-96  flex justify-center items-center overflow-hidden transition ease-in-out duration-400 order-last md:order-first `,
           `${bgColorChanged ? "" : "bg-white shadow-md dark:bg-gray-900"}`,
         ].join("")}
         style={bgColorChanged ? { backgroundColor: bgColorChanged } : null}

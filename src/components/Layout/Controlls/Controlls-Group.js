@@ -39,7 +39,7 @@ const Controlls = () => {
   };
 
   return (
-    <div className=" lg:w-7/12  w-full  dark:bg-gray-900 lg:h-screen bg-gray-200   ">
+    <div className=" lg:w-7/12 xl:w-5/12 w-full  dark:bg-gray-900 lg:h-screen bg-gray-200   ">
       <div className="flex w-100">
         <Button
           otherClasses={["flex-grow  ", mode === "style" ? "active" : ""].join(

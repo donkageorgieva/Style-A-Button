@@ -45,8 +45,8 @@ const CodeWindow = (props) => {
 
   return (
     <React.Fragment>
-      <div className=" lg:h-full lg:justify-center lg:mx-4 w-screen flex flex-col">
-        <div className="bg-white dark:bg-gray-900  lg:w-96 w-full py-8 lg:h-96 flex items-center text-sm text-gray-800 dark:text-indigo-200 justify-center order-last lg:order-none">
+      <div className=" lg:h-full lg:justify-center lg:mx-4 w-screen lg:w-1/3 xl:w-2/3 xl:items-center flex flex-col">
+        <div className="bg-white dark:bg-gray-900  lg:w-80 xl:w-96  w-full py-8 lg:h-96 flex items-center text-sm text-gray-800 dark:text-indigo-200 justify-center order-last lg:order-none">
           <span
             style={{ whiteSpace: "pre" }}
             ref={cssTextRef}
@@ -59,7 +59,7 @@ const CodeWindow = (props) => {
         </div>
         <button
           className={[
-            "   dark:bg-indigo-700 bg-indigo-400 h-24  text-white dark:text-indigo-100 transition duration-400 ease-in-out w-full   lg:w-96  shadow-md",
+            "   dark:bg-indigo-700 bg-indigo-400 h-24  text-white dark:text-indigo-100 transition duration-400 ease-in-out w-full   lg:w-80 xl:w-96  shadow-md",
             `${textCopied ? "active" : ""}`,
           ].join(" ")}
           onClick={copyToClipboardHandler}

@@ -25,7 +25,12 @@ body {
 }
 @media (min-width: 1024px) {
   .twitter-picker {
-    width: 24rem !important;
+    width: 20rem !important;
     height: 6rem !important;
+  }
+}
+@media (min-width: 1280px) {
+  .twitter-picker {
+    width: 24rem !important;
   }
 }
