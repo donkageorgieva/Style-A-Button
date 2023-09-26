@@ -18,7 +18,6 @@ const SliderAndColor = (props) => {
   const colorIndex = chosenValue.indexOf(colorhex);
 
   const sliders = chosenValue.map((v, index) => {
-    console.log(index, v);
     if (!isNaN(v)) {
       return (
         <Slider
